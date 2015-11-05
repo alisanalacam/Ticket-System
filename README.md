@@ -7,7 +7,6 @@ Ticket Sistemi
 - Admin girişi ile ticket oluşturma, onaylama ve arama
 - Ticketları kategori bazlı ekleyebilme
 - Ticketlarda öncelik durumu belirleyebilme
-- Completly customizable by event driven design
 
 ## Kurulum
 
