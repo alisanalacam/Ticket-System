@@ -20,10 +20,20 @@ class AuthController
 
         if ($request->isMethod('POST')) {
             if ($form->isValid($request->request->all())) {
-                echo 'giriş denemesi';exit;
+                echo 'giris denemesi';exit;
             }
         }
 
         return $app['twig']->render('auth/login.html.twig', array('form' => $form));
+    }
+
+    public function checkAction()
+    {
+        throw new \RuntimeException('You must configure the check path to be handled by the firewall.');
+    }
+
+    public function logoutAction()
+    {
+        throw new \RuntimeException('You must activate the logout in your security firewall configuration');
     }
 }

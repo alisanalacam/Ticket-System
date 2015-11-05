@@ -8,10 +8,9 @@ class SignInForm extends \EasyBib_Form
     {
         $this->setMethod('post');
         $mail        = new \Zend_Form_Element_Text('email');
-        $password    = new \Zend_Form_Element_Text('password');
+        $password    = new \Zend_Form_Element_Password('password');
         $submit      = new \Zend_Form_Element_Button('submit');
         $cancel      = new \Zend_Form_Element_Button('cancel');
-
 
         $mail->setLabel('Eposta:')
             ->setAttrib('placeholder', 'eposta adresinizi giriniz!')
@@ -20,7 +19,10 @@ class SignInForm extends \EasyBib_Form
             ->addValidator('emailAddress');
 
         $password->setLabel('Parola:')
-            ->setRequired(true);
+            ->setRequired(true)
+            ->setValidators(array(
+                array('validator' => 'StringLength', 'options' => array(5, 30))
+            ));
 
         $submit->setLabel('Save')
             ->setAttrib('type', 'submit');
