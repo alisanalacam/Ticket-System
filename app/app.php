@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alisan
- * Date: 11/5/15
- * Time: 7:27 AM
- */
+
+// Session Service Provider
+$app->register(new Silex\Provider\SessionServiceProvider());
+
+// Twig Service Provider
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/views',
+));
