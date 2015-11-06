@@ -10,67 +10,35 @@ class SignInForm extends \EasyBib_Form
         $mail        = new \Zend_Form_Element_Text('email');
         $password    = new \Zend_Form_Element_Password('password');
         $submit      = new \Zend_Form_Element_Button('submit');
-        $cancel      = new \Zend_Form_Element_Button('cancel');
 
         $mail->setLabel('Eposta:')
             ->setAttrib('placeholder', 'eposta adresinizi giriniz!')
+            ->setAttrib('class', 'form-control')
             ->setRequired(true)
             ->setDescription('')
-            ->addValidator('emailAddress');
+            ->addValidator('emailAddress')
+            ->setErrorMessages(array('emailAddress' => 'Geçerli bir eposta adresi giriniz!'));
 
         $password->setLabel('Parola:')
             ->setRequired(true)
+            ->setAttrib('class', 'form-control')
+            ->setAttrib('placeholder', '*****')
             ->setValidators(array(
                 array('validator' => 'StringLength', 'options' => array(5, 30))
-            ));
+            ))
+            ->setErrorMessages(array('StringLength' => 'En Az 5 karakter ve en fazla 30 karakter olabilir!'));
 
-        $submit->setLabel('Save')
+        $submit->setLabel('Giriş')
+            ->setAttrib('class', 'btn btn-lg btn-primary btn-block')
             ->setAttrib('type', 'submit');
-        $cancel->setLabel('Cancel');
 
-
-        /*$this->addElement('text', 'email', array(
-            'label' => 'Eposta adresiniz',
-            'class' => 'form-control',
-            'required' => true,
-            'filters' => array('StringTrim'),
-            'validators' => array(
-                'EmailAdress',
-            )
-        ));
-
-        $this->addElement('password', 'password', array(
-            'label' => 'Şifreniz',
-            'required' => true,
-            'filters' => array('StringTrim'),
-            'validators' => array(
-                array('validator' => 'StringLength', 'options' => array(5, 30))
-            )
-        ));
-
-        $this->add(
-            array('email', 'password'),
-            'login',
-            array(
-                'class' => 'form-control'
-            )
-        );
-
-        $this->addElement('submit', 'submit', array(
-            'ignore' => true,
-            'label' => 'Giriş Yap'
-        ));
-
-        $this->addElement('hash', 'csrf', array(
-            'ignore' => true,
-        ));*/
         // add elements
         $this->addElements(array(
-            $mail, $password, $submit, $cancel
+            $mail, $password, $submit
         ));
         // add display group
         $this->addDisplayGroup(
-            array('email', 'password', 'submit', 'cancel'),
+            array('email', 'password', 'submit'),
             'users'
         );
 

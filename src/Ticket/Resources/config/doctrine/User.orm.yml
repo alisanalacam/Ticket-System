@@ -1,0 +1,59 @@
+Ticket\Entity\User:
+    type:  entity
+    table: users
+    #repositoryClass: Ticket\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+
+        username:
+            type: string
+            length: 100
+            nullable: true
+
+        email:
+            type: string
+            length: 100
+
+        salt:
+            type: string
+
+        password:
+            type: string
+
+        enabled:
+            type: boolean
+            options:
+                default: '0'
+
+        role:
+            type: text
+            nullable: true
+
+        deleted:
+            type: boolean
+            length: 1
+            nullable: true
+            options:
+                default: '0'
+
+        createdAt:
+            type: datetime
+            length: 20
+            nullable: true
+            column: created_at
+
+        updatedAt:
+            type: datetime
+            length: 20
+            nullable: true
+            column: updated_at
+
+        deletedAt:
+            type: datetime
+            length: 20
+            nullable: true
+            column: deleted_at

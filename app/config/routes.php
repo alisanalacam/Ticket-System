@@ -12,6 +12,9 @@ $app->match('/logout', 'Ticket\Controller\AuthController::logoutAction')
 $app->match('/login_check', 'Ticket\Controller\AuthController::checkAction')
     ->bind('login_check');
 
+$app->match('/register', 'Ticket\Controller\AuthController::registerAction')
+    ->bind('register');
+
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
         echo "<pre>";
