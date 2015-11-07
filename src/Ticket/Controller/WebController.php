@@ -18,4 +18,9 @@ class WebController
     {
         return $app['twig']->render('index.html.twig');
     }
+
+    public function dashboardAction(Request $request, Application $app)
+    {
+        var_dump('admin');exit;
+    }
 }

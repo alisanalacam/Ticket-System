@@ -7,8 +7,8 @@ class SignInForm extends \EasyBib_Form
     public function init()
     {
         $this->setMethod('post');
-        $mail        = new \Zend_Form_Element_Text('email');
-        $password    = new \Zend_Form_Element_Password('password');
+        $mail        = new \Zend_Form_Element_Text('_username');
+        $password    = new \Zend_Form_Element_Password('_password');
         $submit      = new \Zend_Form_Element_Button('submit');
 
         $mail->setLabel('Eposta:')

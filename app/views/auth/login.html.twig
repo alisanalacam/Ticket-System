@@ -1,5 +1,13 @@
 {% extends "layouts/layout-login.html.twig" %}
 {% block title %}Giriş{% endblock %}
 {% block content %}
+    {% if error is defined %}
+        {{ error }}
+    {% endif %}
+    {% for message in app.session.getFlashBag.get('message') %}
+        <div class="alert alert-danger text-center">
+            <strong>{{ message }}</strong>
+        </div>
+    {% endfor %}
     {{ form|raw }}
 {% endblock %}

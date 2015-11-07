@@ -14,6 +14,7 @@ $app['db.options'] = array(
     'dbname'   => 'ticket',
     'user'     => 'root',
     'password' => '123',
+    'charset' => 'utf8'
 );
 
 // SwiftMailer
@@ -25,5 +26,3 @@ $app['swiftmailer.options'] = array(
     'encryption' => null,
     'auth_mode' => null
 );
-
-require __DIR__.'/security.php';

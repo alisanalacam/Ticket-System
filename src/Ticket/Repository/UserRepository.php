@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserRepository extends EntityRepository implements UserProviderInterface
 {
+
     /**
      * UserProvider
      * @param type $username

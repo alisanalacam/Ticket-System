@@ -6,12 +6,32 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface
 {
+
+    public function __construct()
+    {
+        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+    }
     /**
      * User id.
      *
      * @var integer
      */
     protected $id;
+
+    /**
+     * Name.
+     *
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * Surname.
+     *
+     * @var string
+     */
+    protected $surname;
+
     /**
      * Username.
      *
@@ -103,6 +123,32 @@ class User implements UserInterface
     /**
      * @inheritDoc
      */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getUsername()
     {
         return $this->username;
@@ -139,12 +185,12 @@ class User implements UserInterface
         $this->password = $password;
     }
 
-    public function getEMail()
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEMail($email)
+    public function setEmail($email)
     {
         $this->email = $email;
     }

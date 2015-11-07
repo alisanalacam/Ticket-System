@@ -1,13 +1,23 @@
 Ticket\Entity\User:
     type:  entity
     table: users
-    #repositoryClass: Ticket\Repository\UserRepository
+    repositoryClass: Ticket\Repository\UserRepository
     id:
         id:
             type: integer
             generator:
                 strategy: AUTO
     fields:
+
+        name:
+            type: string
+            length: 100
+            nullable: true
+
+        surname:
+            type: string
+            length: 100
+            nullable: true
 
         username:
             type: string
@@ -27,7 +37,7 @@ Ticket\Entity\User:
         enabled:
             type: boolean
             options:
-                default: '0'
+                default: '1'
 
         role:
             type: text
