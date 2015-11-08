@@ -43,12 +43,10 @@ komutu ile tabloları içeri aktarın.
 
 Admin Kullanıcısı:
 - admin@@gmail.com
-Admin Şifre:
 - 123123a
 
 Kullanıcı:
 - alisanalacam@gmail.com
-Şifre:
 - 123213a
 
 ## Yapılacaklar
