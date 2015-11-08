@@ -74,7 +74,7 @@ $app->boot();
 $app['twig'] = $app->extend('twig', function($twig) {
 
     $twig->addFunction(new \Twig_SimpleFunction('asset', function ($asset) {
-        return sprintf('%s', ltrim($asset, '/'));
+        return sprintf('/%s', ltrim($asset, '/'));
     }));
     return $twig;
 });

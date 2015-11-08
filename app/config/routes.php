@@ -27,10 +27,10 @@ $app->match('/ticket/category/create', 'Ticket\Controller\TicketController::crea
     ->bind('ticket_category_create')->method('GET|POST');
 
 $app->match('/ticket/category/update/{id}', 'Ticket\Controller\TicketController::updateCategoryAction')
-    ->bind('ticket_category_update')->method('GET|PUT');
+    ->bind('ticket_category_update')->method('GET|POST');
 
 $app->delete('/ticket/category/delete/{id}', 'Ticket\Controller\TicketController::deleteCategoryAction')
-    ->bind('ticket_category_delete')->method('GET|PUT');
+    ->bind('ticket_category_delete')->method('GET|POST');
 
 // Security
 $app->post('/login_check', function() {})

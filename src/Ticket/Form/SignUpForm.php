@@ -2,8 +2,6 @@
 
 namespace Ticket\Form;
 
-use Symfony\Component\HttpFoundation\Session\Session;
-
 class SignUpForm extends \EasyBib_Form
 {
     public function init()

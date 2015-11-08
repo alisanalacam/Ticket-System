@@ -1,0 +1,24 @@
+{% extends "layouts/layout-base.html.twig" %}
+{% block title %}Destek Kategorileri{% endblock %}
+{% set active = 'ticket_index' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Kategori Adı</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kategori adı</td>
+                        <td><i class="glyphicon glyphicon-edit"></i></td>
+                        <td><i class="glyphicon glyphicon-trash"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
