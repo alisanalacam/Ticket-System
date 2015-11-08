@@ -42,7 +42,7 @@ komutu ile tabloları içeri aktarın.
 - http://domain/ticket/web adresinden erişebilirsiniz
 
 Admin Kullanıcısı:
-- admin@@gmail.com
+- admin@gmail.com
 - 123123a
 
 Kullanıcı:
