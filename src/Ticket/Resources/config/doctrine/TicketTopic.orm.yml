@@ -1,0 +1,58 @@
+Ticket\Entity\TicketTopic:
+    type: entity
+    table: ticket_topic
+    repositoryClass: Ticket\Repository\TicketTopicRepository
+    indexes:
+        deleted:
+            columns: [deleted]
+        authorId:
+            columns: [author_id]
+        recepientId:
+            columns: [recepient_id]
+        priorityId:
+            columns: [priority_id]
+        statusId:
+            columns: [status_id]
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        authorId:
+            type: integer
+            column: author_id
+        recepientId:
+            type: integer
+            column: recepient_id
+        subject:
+            type: string
+            length: 255
+        priorityId:
+            type: integer
+            column: priority_id
+        statusId:
+            type: integer
+            column: status_id
+        content:
+            type: text
+        userIp:
+            type: string
+            length: '20'
+            column: user_ip
+        deleted:
+            type: boolean
+            options:
+              default: '0'
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+            nullable: true
+        deletedAt:
+            type: datetime
+            column: deleted_at
+            nullable: true
+    lifecycleCallbacks: {  }

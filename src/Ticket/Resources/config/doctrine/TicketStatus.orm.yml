@@ -1,0 +1,33 @@
+Ticket\Entity\TicketStatus:
+    type: entity
+    table: ticket_status
+    repositoryClass: Ticket\Repository\TicketStatusRepository
+    indexes:
+        deleted:
+            columns: [deleted]
+    fields:
+        id:
+            type: smallint
+            id: true
+            generator:
+                strategy: AUTO
+        statusName:
+            type: string
+            length: '50'
+            column: status_name
+        deleted:
+            type: boolean
+            options:
+              default: '0'
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+            nullable: true
+        deletedAt:
+            type: datetime
+            column: deleted_at
+            nullable: true
+    lifecycleCallbacks: {  }

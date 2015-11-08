@@ -26,6 +26,7 @@
                     <li class="active"><a href="{{ path('homepage') }}">Anasayfa</a></li>
                     <li><a href="#">Destek Oluştur</a></li>
                     <li><a href="#">Desteklerim</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destek Yönetim <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -38,6 +39,7 @@
                             <li><a href="#">One more separated link</a></li>
                         </ul>
                     </li>
+                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') == false %}

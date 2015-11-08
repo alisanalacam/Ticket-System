@@ -1,0 +1,41 @@
+Ticket\Entity\TicketCategories:
+    type: entity
+    table: ticket_categories
+    repositoryClass: Ticket\Repository\TicketCategoriesRepository
+    indexes:
+        ticketId:
+            columns: [ticket_id]
+        categoryId:
+            columns: [category_id]
+        deleted:
+            columns: [deleted]
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        ticketId:
+            type: integer
+            column: ticket_id
+            options:
+              unsigned: true
+        categoryId:
+            type: integer
+            column: category_id
+        deleted:
+            type: boolean
+            options:
+              default: '0'
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+            nullable: true
+        deletedAt:
+            type: datetime
+            column: deleted_at
+            nullable: true
+    lifecycleCallbacks: {  }

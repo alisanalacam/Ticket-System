@@ -14,13 +14,8 @@ class WebController
      * @param Application $app
      * @return mixed
      */
-    public function indexAction(Request $request, Application $app)
+    public function indexAction(Application $app)
     {
         return $app['twig']->render('index.html.twig');
-    }
-
-    public function dashboardAction(Request $request, Application $app)
-    {
-        var_dump('admin');exit;
     }
 }

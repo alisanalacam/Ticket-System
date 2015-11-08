@@ -1,0 +1,41 @@
+Ticket\Entity\TicketReply:
+    type: entity
+    table: ticket_reply
+    repositoryClass: Ticket\Repository\TicketReplyRepository
+    indexes:
+        deleted:
+            columns: [deleted]
+        ticketId:
+            columns: [ticket_id]
+        replyId:
+            columns: [reply_id]
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        ticketId:
+            type: integer
+            column: ticket_id
+        replyId:
+            type: integer
+            column: reply_id
+        content:
+            type: text
+        deleted:
+            type: boolean
+            options:
+              default: '0'
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+            nullable: true
+        deletedAt:
+            type: datetime
+            column: deleted_at
+            nullable: true
+    lifecycleCallbacks: {  }
