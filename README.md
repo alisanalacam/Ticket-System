@@ -54,3 +54,4 @@ Kullanıcı:
 - Kategori yönetim modülü yapılacak
 - Ticket yönetim modülü yapılacak
 - Ticketı dosya eki ile oluşturabilme
+- Erişim kontrolleri yapılacak
