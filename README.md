@@ -34,12 +34,12 @@ exit
 yazarak çıkış yapın.
 
 ```cli
-mysql -u root -p -h localhost tickets < app/ticket-system.sql
+mysql -u root -p -h localhost ticket < app/ticket-system.sql
 ```
 
 komutu ile tabloları içeri aktarın.
 
-- http://domain/ticket/web adresinden erişebilirsiniz
+- http://localhost/Ticket-System-master/web adresinden erişebilirsiniz
 
 Admin Kullanıcısı:
 - admin@gmail.com

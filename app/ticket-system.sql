@@ -106,5 +106,5 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 INSERT INTO `users` (`id`, `name`, `surname`, `username`, `email`, `salt`, `password`, `enabled`, `role`, `deleted`, `created_at`, `updated_at`, `deleted_at`) VALUES
-  (1, 'Admin', 'ALAÇAM', NULL, 'admin@gmail.com', 'hc03oebynuo0kk0gg04ww4w8kccosgs', '7R61WzkipiJy4WT9OpxDkylq0H24rKz5oRLtBqfeTcXk3lqlgjCZF16JA8sZp9VjXWl9M+1DLMEl27/hZzQXVw==', 1, 'ROLE_ADMIN', 0, '2015-11-07 12:19:58', NULL, NULL),
-  (2, 'Alişan', 'ALAÇAM', NULL, 'alisanalacam@gmail.com', 'hc03oebynuo0kk0gg04ww4w8kccosgs', '7R61WzkipiJy4WT9OpxDkylq0H24rKz5oRLtBqfeTcXk3lqlgjCZF16JA8sZp9VjXWl9M+1DLMEl27/hZzQXVw==', 1, 'ROLE_USER', 0, '2015-11-07 12:19:58', NULL, NULL);
+(1, 'Admin', 'ALAÇAM', NULL, 'admin@gmail.com', 'hc03oebynuo0kk0gg04ww4w8kccosgs', '7R61WzkipiJy4WT9OpxDkylq0H24rKz5oRLtBqfeTcXk3lqlgjCZF16JA8sZp9VjXWl9M+1DLMEl27/hZzQXVw==', 1, 'ROLE_ADMIN', 0, '2015-11-07 12:19:58', NULL, NULL),
+(2, 'Alişan', 'ALAÇAM', NULL, 'alisanalacam@gmail.com', 'hc03oebynuo0kk0gg04ww4w8kccosgs', '7R61WzkipiJy4WT9OpxDkylq0H24rKz5oRLtBqfeTcXk3lqlgjCZF16JA8sZp9VjXWl9M+1DLMEl27/hZzQXVw==', 1, 'ROLE_USER', 0, '2015-11-07 12:19:58', NULL, NULL);
