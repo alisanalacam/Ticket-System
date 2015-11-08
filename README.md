@@ -18,16 +18,41 @@ composer install
 ```
 
 - Veritabanını oluşturun (varsayılan veritabanı: ticket)
-- Veritabanı şemasını oluşturun (varsayılan veritabanı username/password: root/123)
+
+```cli
+mysql -u root -p
+```
+ile mysql e bağlanın ve şifrenizi girin.
+
+```cli
+CREATE DATABASE ticket;
+```
+ile veritabanını oluşturun ve
+```cli
+exit
+```
+yazarak çıkış yapın.
+
+```cli
+mysql -u root -p -h localhost tickets < app/ticket-system.sql
+```
+
+komutu ile tabloları içeri aktarın.
 
 - http://domain/ticket/web adresinden erişebilirsiniz
 
+Admin Kullanıcısı:
+- admin@@gmail.com
+Admin Şifre:
+- 123123a
+
+Kullanıcı:
+- alisanalacam@gmail.com
+Şifre:
+- 123213a
+
 ## Yapılacaklar
 
-- Twig render motoru eklenecek
-- ZF1 Form component eklenecek
-- Doctrine ORM servisi eklenecek
-- Kullanıcı ve admin için giriş ekranları yapılacak
-- Tema tasarımı yapılacak
 - Kategori yönetim modülü yapılacak
 - Ticket yönetim modülü yapılacak
+- Ticketı dosya eki ile oluşturabilme
