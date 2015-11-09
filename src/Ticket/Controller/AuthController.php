@@ -26,48 +26,8 @@ class AuthController
         $form->setAction($app['url_generator']->generate('login_check'));
         $form->setView($view);
 
-        if ($request->isMethod('POST')) {
-            if ($form->isValid($request->request->all())) {
-
-                $data = $request->request;
-
-                $email = $data->get('email');
-                $password = $data->get('password');
-                $em = $app['orm.em'];
-                $session = $app['session'];
-
-                $repository = $em->getRepository('Ticket\Entity\User');
-                $user = $repository->findOneBy(array(
-                    'email' => $email,
-                    'deleted' => 0
-                ));
-
-                if ($user !== null) {
-                    $userPassword = $app['security.encoder.digest']->encodePassword($password, $user->getSalt());
-
-                    // Email, parola doğru ise ve kullanıcı aktif ise
-                    if ($userPassword == $user->getPassword() && $user->getEnabled() === true) {
-
-                        $token = new UsernamePasswordToken($user, null, "secured_area", $user->getRoles());
-
-                        $app['security.token_storage']->setToken($token);
-                        return $app->redirect($app['url_generator']->generate('homepage'));
-                    }
-                }
-
-                $session->getFlashBag()->add('message', 'Geçersiz eposta veya şifre!');
-                return $app->redirect($app['url_generator']->generate('login'));
-            }
-        }
-
         return $app['twig']->render('auth/login.html.twig', array('form' => $form));
     }
-
-    /*public function logoutAction(Request $request, Application $app)
-    {
-        $app['session']->clear();
-        return $app->redirect($app['url_generator']->generate('homepage'));
-    }*/
 
     /**
      * Üyelik kayıt formu ve kayıt etme işlemi yapar
@@ -128,11 +88,17 @@ class AuthController
         return $app['twig']->render('auth/register.html.twig', array('form' => $form));
     }
 
+    /**
+     * Kontrol esnasında firewall yapılandırma hatası olursa
+     */
     public function checkAction()
     {
         throw new \RuntimeException('You must configure the check path to be handled by the firewall.');
     }
 
+    /**
+     * Çıkış esnasında firewall yapılandırma hatası olursa
+     */
     public function logoutAction()
     {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration');
