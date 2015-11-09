@@ -18,6 +18,11 @@ class TicketStatus
     private $statusName;
 
     /**
+     * @var string
+     */
+    private $className;
+
+    /**
      * @var boolean
      */
     private $deleted;
@@ -69,6 +74,29 @@ class TicketStatus
     public function getStatusName()
     {
         return $this->statusName;
+    }
+
+    /**
+     * Set className
+     *
+     * @param string $className
+     * @return TicketStatus
+     */
+    public function setClassName($className)
+    {
+        $this->className = $className;
+
+        return $this;
+    }
+
+    /**
+     * Get className
+     *
+     * @return string
+     */
+    public function getClassName()
+    {
+        return $this->className;
     }
 
     /**

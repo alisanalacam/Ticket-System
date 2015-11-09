@@ -15,6 +15,10 @@ Ticket\Entity\TicketPriority:
             type: string
             length: '30'
             column: priority_name
+        className:
+            type: string
+            length: '30'
+            column: class_name
         deleted:
             type: boolean
             options:

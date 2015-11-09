@@ -1,0 +1,10 @@
+{% extends "layouts/layout-base.html.twig" %}
+{% block title %}Destek Ekle{% endblock %}
+{% set active = 'ticket_create' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form|raw }}
+        </div>
+    </div>
+{% endblock %}

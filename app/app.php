@@ -68,13 +68,16 @@ $app->register(new UserServiceProvider(), array(
     'security.authentication_providers' => $app['security.authentication_providers']
 ));
 
+$app['security.authentication.success_handler.secured_area'] =
+    new Ticket\Handler\AuthenticationSuccessHandler($app['security.http_utils'], array(), $app);
+
 $app->boot();
 
 // Twig asset function
 $app['twig'] = $app->extend('twig', function($twig) {
 
     $twig->addFunction(new \Twig_SimpleFunction('asset', function ($asset) {
-        return sprintf('%s', ltrim($asset, '/'));
+        return sprintf('/%s', ltrim($asset, '/'));
     }));
     return $twig;
 });
