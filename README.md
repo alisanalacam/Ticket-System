@@ -51,7 +51,7 @@ Kullanıcı:
 
 ## Yapılacaklar
 
-- Kategori yönetim modülü yapılacak
-- Ticket yönetim modülü yapılacak
+- Yöneticinin cevap yazabilmesi
+- Yöneticinin ticket durmunu çözüldü işaretleyebilmesi
 - Ticketı dosya eki ile oluşturabilme
 - Erişim kontrolleri yapılacak

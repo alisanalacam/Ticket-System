@@ -1,0 +1,14 @@
+{% extends "layouts/layout-base.html.twig" %}
+{% block title %}Destek Önizleme{% endblock %}
+{% set active = 'ticket_index' %}
+{% block content %}
+    {% for message in app.session.getFlashBag.get('success') %}
+        <div class="alert alert-success text-center">
+            <strong>{{ message }}</strong>
+        </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+        </div>
+    </div>
+{% endblock %}
