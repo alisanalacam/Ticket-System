@@ -12,24 +12,42 @@ class TicketTopicRepository extends EntityRepository
      * @param null $recepientId
      * @return array
      */
-    public function getTickets($authorId = null, $recepientId = null)
+    public function getTickets($authorId = null, $recepientId = null, $id = null)
     {
         $qb = $this->createQueryBuilder('t')
-            ->select('t.id, t.subject, tp.priorityName, tp.className as priorityClass, ts.statusName, ts.className as statusClass')
+            ->select('t.id, t.subject, t.content, tp.priorityName, tp.className as priorityClass, ts.statusName, ts.className as statusClass')
             ->leftJoin('Ticket\Entity\TicketPriority', 'tp', 'WITH', 'tp.id = t.priorityId and tp.deleted = 0')
             ->leftJoin('Ticket\Entity\TicketStatus', 'ts', 'WITH', 'ts.id = t.statusId and ts.deleted = 0');
 
         if ($recepientId !== null) {
-            $qb->where('t.recepientId = :recepientId AND t.deleted = 0')->setParameters(array(
-                'recepientId' => $recepientId
-            ));
+            if ($id !== null) {
+                $qb->where('t.recepientId = :recepientId AND t.deleted = 0 AND t.id = :id')->setParameters(array(
+                    'recepientId' => $recepientId,
+                    'id' => $id
+                ));
+            } else {
+                $qb->where('t.recepientId = :recepientId AND t.deleted = 0')->setParameters(array(
+                    'recepientId' => $recepientId
+                ));
+            }
         } else {
-            $qb->where('t.authorId = :authorId AND t.deleted = 0')->setParameters(array(
-                'authorId' => $authorId
-            ));
+            if ($id !== null) {
+                $qb->where('t.authorId = :authorId AND t.deleted = 0 AND t.id = :id')->setParameters(array(
+                    'authorId' => $authorId,
+                    'id' => $id
+                ));
+            } else {
+                $qb->where('t.authorId = :authorId AND t.deleted = 0')->setParameters(array(
+                    'authorId' => $authorId
+                ));
+            }
         }
 
-        return $qb->getQuery()->getArrayResult();
+        if ($id !== null) {
+            return $qb->getQuery()->getOneOrNullResult();
+        } else {
+            return $qb->getQuery()->getArrayResult();
+        }
     }
 
     /**
