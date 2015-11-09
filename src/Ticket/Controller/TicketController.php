@@ -9,6 +9,7 @@ use Ticket\Entity\TicketCategory;
 use Ticket\Entity\TicketTopic;
 use Ticket\Form\TicketCategoryForm;
 use Ticket\Form\TicketForm;
+use Ticket\Form\TicketReplyForm;
 
 /**
  * Class TicketController
@@ -118,9 +119,67 @@ class TicketController
      * @param Application $app
      * @return mixed
      */
-    public function showAction(Request $request, Application $app)
+    public function showAction($id, Request $request, Application $app)
     {
-        return $app['twig']->render('ticket/show.html.twig');
+        $view = new \Zend_View();
+        $form = new TicketReplyForm();
+
+        $userId = $app['session']->get('userId');
+
+        // Kullanıcının ticketları
+        if ($app['security']->isGranted('ROLE_USER')) {
+            $ticket = $app['orm.em']->getRepository('Ticket\Entity\TicketTopic')->getTickets($userId, null, $id);
+
+            // Yöneticinin kendisine gelen ticketları
+        } else if ($app['security']->isGranted('ROLE_ADMIN')) {
+            $ticket = $app['orm.em']->getRepository('Ticket\Entity\TicketTopic')->getTickets(null, $userId, $id);
+        }
+
+        $ticketCategories = $app['orm.em']->getRepository('Ticket\Entity\TicketTopic')->getTicketCategories($ticket['id']);
+        $ticketReplies = array();
+
+        $form->setAttrib('class', 'form-horizontal');
+        $form->setAction($app['url_generator']->generate('ticket_show', array('id' => $id)));
+        $form->setView($view);
+
+        if ($request->getMethod() == 'POST') {
+
+            if ($form->isValid($request->request->all())) {
+
+                $data = $form->getValues();
+
+                $ticket = new TicketTopic();
+
+                $ticket->setSubject($data['subject']);
+                $ticket->setContent($data['content']);
+                $ticket->setPriorityId($data['priorityId']);
+                // Yeni Destek
+                $ticket->setStatusId(1);
+                // Yetkili Yönetici
+                $ticket->setRecepientId(1);
+                $ticket->setAuthorId($app['session']->get('userId'));
+                $ticket->setUserIp($request->server->get
+                ('REMOTE_ADDR'));
+                $ticket->setCreatedAt(new \DateTime());
+                $ticket->setDeleted(false);
+
+                $app['orm.em']->persist($ticket);
+                $app['orm.em']->flush();
+
+                $message = 'Destek cevaplandı.';
+                $app['session']->getFlashBag()->add('success', $message);
+
+                $redirect = $app['url_generator']->generate('show', array('id' => $id));
+                return $app->redirect($redirect);
+            }
+        }
+
+        return $app['twig']->render('ticket/show.html.twig', array(
+            'form' => $form,
+            'ticketReplies' => $ticketReplies,
+            'ticket' => $ticket,
+            'ticketCategories' => $ticketCategories
+        ));
     }
 
     public function updateAction(Request $request, Application $app)
