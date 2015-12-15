@@ -3,6 +3,7 @@ use Silex\Application;
 use Silex\Provider;
 use Ticket\Provider\UserServiceProvider;
 
+
 // Url Generator Service Provider Register
 $app->register(new \Silex\Provider\UrlGeneratorServiceProvider());
 
